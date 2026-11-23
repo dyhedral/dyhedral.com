@@ -36,7 +36,6 @@
   .lastpitch h2 { margin: var(--s-4) 0; }
   .contact { text-align: left; }
   .contact a { display: inline-block; margin-top: var(--s-5); color: var(--text); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 5vw, 60px); letter-spacing: -0.04em; text-decoration-color: var(--signal); text-decoration-thickness: 6px; text-underline-offset: 8px; }
-  footer { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-5) 0 var(--s-7); border-top: var(--heavy) solid var(--rule-strong); }
 
   @media (max-width: 820px) {
     .hero, .split { grid-template-columns: minmax(0, 1fr); }
@@ -44,17 +43,46 @@
     .hero figure { max-width: 320px; }
     section { padding: var(--s-7) 0; }
   }
+
+  /* Family header and footer: the same on dyhedral.com, lastpitch.ai and twopitch.com; colours come from each site's tokens. */
+  .fam-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; border-bottom: 1px solid var(--rule); }
+  .fam-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 20px; letter-spacing: -0.03em; }
+  .fam-brand svg { width: 26px; height: 26px; flex: none; }
+  .fam-right { display: flex; align-items: center; gap: 20px; }
+  .fam-lab { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); }
+  .fam-tag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 4px; padding: 6px 8px; white-space: nowrap; }
+  .fam-tag i { width: 8px; height: 8px; border-radius: 2px; background: var(--signal); }
+  a.fam-lab { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-decoration: none; }
+  a.fam-lab:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .fam-foot { margin-top: 64px; border-top: 3px solid var(--rule-strong); color: var(--text); }
+  .fam-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .fam-cell { padding: 24px 24px 24px 0; }
+  .fam-cell + .fam-cell { padding-left: 24px; border-left: 1px solid var(--rule); }
+  .fam-name { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 22px; letter-spacing: -0.03em; }
+  .fam-name svg { width: 24px; height: 24px; flex: none; }
+  .fam-desc { margin: 12px 0 0; max-width: 34ch; font-size: 15px; line-height: 1.45; color: var(--text-2); }
+  .fam-cell .fam-lab { display: block; margin-top: 16px; } .fam-cell .fam-lab:first-child { margin-top: 0; }
+  .fam-cell p { margin: 0; padding: 12px 0; font-size: 15px; line-height: 20px; color: var(--text-2); }
+  .fam-cell ul { list-style: none; margin: 0; padding: 0; }
+  .fam-cell a { display: inline-block; padding: 12px 0; font-size: 15px; line-height: 20px; color: var(--text); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+  .fam-cell a:hover { text-decoration-color: var(--text); }
+  .fam-cell [aria-current="page"] { display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-size: 15px; line-height: 20px; font-weight: 700; }
+  .fam-cell [aria-current="page"]::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--signal); }
+  .fam-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 16px 0 48px; border-top: 1px solid var(--rule); }
+  @media (max-width: 820px) {
+    .fam-grid { grid-template-columns: minmax(0, 1fr); }
+    .fam-cell, .fam-cell + .fam-cell { padding: 24px 0; border-left: 0; }
+    .fam-cell + .fam-cell { border-top: 1px solid var(--rule); }
+    .fam-head .fam-tag { display: none; }
+  }
 </style>
 </head>
 <body>
 
 <div class="t-page">
-  <header class="nav">
-    <a class="brand" href="#top">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 28 16 4l11 24" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M16 4v24" stroke="var(--signal-text)" stroke-width="2.6"/></svg>
-      dyhedral
-    </a>
-    <a class="t-label" href="#contact">Contact →</a>
+  <header class="fam-head">
+    <a class="fam-brand" href="#top" aria-label="Dyhedral, home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 28 16 4l11 24" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M16 4v24" stroke="var(--signal-text)" stroke-width="2.6"/></svg>Dyhedral</a>
+    <div class="fam-right"><a class="fam-lab" href="#contact">Contact &rarr;</a></div>
   </header>
 
   <main id="top">
@@ -118,9 +146,29 @@
     <h2 style="margin-top: var(--s-4)">Got a route in mind?</h2>
     <a href="mailto:hello@dyhedral.com">hello@dyhedral.com</a>
   </section>
-  <footer>
-    <span class="t-label">© 2026 Dyhedral LLC</span>
-    <span class="t-label">Maine, USA</span>
+  <footer class="fam-foot">
+    <div class="fam-grid">
+      <div class="fam-cell">
+        <div class="fam-name"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 28 16 4l11 24" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M16 4v24" stroke="var(--signal-text)" stroke-width="2.6"/></svg>Dyhedral</div>
+        <p class="fam-desc">Infrastructure consulting for software teams and the AI agents working beside them.</p>
+      </div>
+      <div class="fam-cell">
+        <span class="fam-lab">Contact</span>
+        <a href="mailto:hello@dyhedral.com">hello@dyhedral.com</a>
+        <span class="fam-lab">Where</span>
+        <p>Maine, USA</p>
+      </div>
+      <div class="fam-cell">
+        <span class="fam-lab">The set</span>
+        <nav aria-label="Dyhedral sites"><ul>
+          <li><span aria-current="page">Dyhedral</span></li>
+          <li><a href="https://lastpitch.ai">Lastpitch</a></li>
+          <li><a href="https://hucksprintshop.com">Huck&rsquo;s Print Shop</a></li>
+          <li><a href="https://twopitch.com">Twopitch</a></li>
+        </ul></nav>
+      </div>
+    </div>
+    <div class="fam-base fam-lab"><span>&copy; 2026 Dyhedral LLC</span><span>Sheet 1 of 4</span></div>
   </footer>
 </div>
 
